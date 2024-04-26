@@ -9,7 +9,7 @@
   <a href="https://getstream.io?utm_source=Github&utm_medium=Jaewoong_OSS&utm_content=Developer&utm_campaign=Github_April2024_Jaewoong_Android_Video_Chat&utm_term=DevRelOss"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HayesGordon/e7f3c4587859c17f3e593fd3ff5b13f4/raw/11d9d9385c9f34374ede25f6471dc743b977a914/badge.json" alt="Stream Feeds"></a>
 </p>
 
-⚡️ Android Video Chat demonstrates to utilize the [Stream Video SDK](https://getstream.io/video/sdk/android/?utm_source=Github&utm_medium=Jaewoong_OSS&utm_content=Developer&utm_campaign=Github_April2024_Jaewoong_Android_Video_Samples&utm_term=DevRelOss) and [Stream Chat SDK](https://getstream.io/chat/compose/tutorial/?utm_source=Github&utm_medium=Jaewoong_OSS&utm_content=Developer&utm_campaign=Github_April2024_Jaewoong_Android_Video_Chat&utm_term=DevRelOss) to implement a real-time video chat application, such as Zoom and Google Meet.
+⚡️ Android Video Chat demonstrates a real-time video chat application, such as Zoom and Google Meet by utilizing [Stream Video SDK](https://getstream.io/video/sdk/android/?utm_source=Github&utm_medium=Jaewoong_OSS&utm_content=Developer&utm_campaign=Github_April2024_Jaewoong_Android_Video_Samples&utm_term=DevRelOss) and [Stream Chat SDK](https://getstream.io/chat/compose/tutorial/?utm_source=Github&utm_medium=Jaewoong_OSS&utm_content=Developer&utm_campaign=Github_April2024_Jaewoong_Android_Video_Chat&utm_term=DevRelOss).
 
 ## 📲 Download APK
 Go to the [Releases](https://github.com/GetStream/android-video-chat/releases) to download the latest APK. The application is also available on [Google Play](https://play.google.com/store/apps/details?id=io.getstream.video.android).
