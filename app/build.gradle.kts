@@ -144,6 +144,10 @@ android {
         jniLibs.pickFirsts.add("lib/*/librenderscript-toolkit.so")
     }
 
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
     baselineProfile {
         mergeIntoMain = true
     }
