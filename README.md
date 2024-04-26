@@ -11,6 +11,19 @@
 
 ⚡️ Android Video Chat demonstrates a real-time video chat application, such as Zoom and Google Meet by utilizing [Stream Video SDK](https://getstream.io/video/sdk/android/?utm_source=Github&utm_medium=Jaewoong_OSS&utm_content=Developer&utm_campaign=Github_April2024_Jaewoong_Android_Video_Samples&utm_term=DevRelOss) and [Stream Chat SDK](https://getstream.io/chat/compose/tutorial/?utm_source=Github&utm_medium=Jaewoong_OSS&utm_content=Developer&utm_campaign=Github_April2024_Jaewoong_Android_Video_Chat&utm_term=DevRelOss).
 
+The purpose of this repository is to demonstrate the following functionalities:
+- Real-time video meeting room development using Kotlin and Jetpack Compose:
+   - Features include joining, creating calls, scanning QR codes, and sharing the room.
+- A lobby room to verify camera and microphone status before joining.
+- Capability to join a video call with multiple participants.
+- Implementation of real-time chat communication within the meeting room.
+- Support for sending real-time reactions during a call.
+- Functionality to record video calls in real-time.
+- Video filters such as virtual backgrounds or blurring effects.
+- Screen sharing capabilities with multiple participants.
+- Notifications management for call-related events.
+- Picture-in-picture mode for ongoing live calls.
+
 ## 📲 Download APK
 Go to the [Releases](https://github.com/GetStream/android-video-chat/releases) to download the latest APK. The application is also available on [Google Play](https://play.google.com/store/apps/details?id=io.getstream.video.android).
 
