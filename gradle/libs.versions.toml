@@ -92,7 +92,7 @@ google-mlkit-selfie-segmentation = { group = "com.google.mlkit", name = "segment
 # Dependencies of the included build-logic
 androidx-camera-core = { group = "androidx.camera", name = "camera-core", version = "1.3.0" }
 play-services-mlkit-barcode-scanning = { group = "com.google.android.gms", name = "play-services-mlkit-barcode-scanning", version = "18.3.0" }
-androidx-camera-view = { group = "androidx.camera", name = "camera-view", version = "1.3.0" }
+androidx-camera-view = { group = "androidx.camera", name = "camera-view", version = "1.3.3" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version = "1.3.0" }
 
 [plugins]
