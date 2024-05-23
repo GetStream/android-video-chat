@@ -2,8 +2,8 @@
 androidGradlePlugin = "8.4.1"
 cameraCamera2 = "1.3.0"
 spotless = "6.21.0"
-kotlin = "1.9.23"
-ksp = "1.9.23-1.0.20"
+kotlin = "2.0.0"
+ksp = "2.0.0-1.0.21"
 kotlinSerialization = "1.6.3"
 kotlinSerializationConverter = "1.0.0"
 kotlinxCoroutines = "1.8.1"
@@ -14,7 +14,6 @@ androidxCore = "1.13.1"
 androidxAnnotation = "1.7.1"
 androidxLifecycle = "2.7.0"
 androidxActivity = "1.8.2"
-androidxComposeCompiler = "1.5.11"
 androidxComposeBom = "2024.05.00"
 androidxHiltNavigation = "1.2.0"
 androidxComposeNavigation = "2.7.7"
@@ -101,6 +100,7 @@ android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlinDokka" }
