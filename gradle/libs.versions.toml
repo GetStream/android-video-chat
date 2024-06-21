@@ -32,7 +32,7 @@ playAuth = "21.2.0"
 androidxMacroBenchmark = "1.2.3"
 androidxContraintLayout = "2.1.4"
 firebaseBom = "33.1.0"
-firebaseCrashlytics = "2.9.5"
+firebaseCrashlytics = "3.0.2"
 googleMlKitSelfieSegmentation = "16.0.0-beta4"
 
 [libraries]
