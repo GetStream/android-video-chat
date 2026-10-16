@@ -38,10 +38,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import io.getstream.chat.android.compose.ui.messages.MessagesScreen
+import io.getstream.chat.android.compose.ui.messages.ChannelScreen
 import io.getstream.chat.android.compose.ui.theme.ChatTheme
+import io.getstream.chat.android.compose.viewmodel.messages.ChannelViewModelFactory
 import io.getstream.chat.android.compose.viewmodel.messages.MessageListViewModel
-import io.getstream.chat.android.compose.viewmodel.messages.MessagesViewModelFactory
 import io.getstream.chat.android.ui.common.state.messages.list.MessageItemState
 import io.getstream.video.android.compose.theme.VideoTheme
 import io.getstream.video.android.core.Call
@@ -59,19 +59,19 @@ internal fun ChatDialog(
 ) {
     val context = LocalContext.current
     val viewModelFactory = remember {
-        MessagesViewModelFactory(
+        ChannelViewModelFactory(
             context = context,
             channelId = "videocall:${call.id}",
         )
     }
     val listViewModel = viewModel(MessageListViewModel::class.java, factory = viewModelFactory)
-    val unreadCount = listViewModel.currentMessagesState.unreadCount
+    val unreadCount = listViewModel.currentMessagesState.value.unreadCount
 
     LaunchedEffect(key1 = unreadCount) {
         updateUnreadCount.invoke(unreadCount)
     }
 
-    val messageItems = listViewModel.currentMessagesState.messageItems
+    val messageItems = listViewModel.currentMessagesState.value.messageItems
     LaunchedEffect(key1 = messageItems) {
         onNewMessages.invoke(
             messageItems.filterIsInstance<MessageItemState>().take(3)
@@ -107,7 +107,7 @@ internal fun ChatDialog(
                 if (state.isVisible) {
                     Column(
                         modifier = Modifier
-                            .background(ChatTheme.colors.appBackground)
+                            .background(ChatTheme.colors.backgroundCoreApp)
                             .fillMaxWidth()
                             .height(500.dp),
                     ) {
@@ -116,7 +116,7 @@ internal fun ChatDialog(
                                 .align(Alignment.End)
                                 .padding(16.dp)
                                 .clickable { onDismissed.invoke() },
-                            tint = ChatTheme.colors.textHighEmphasis,
+                            tint = ChatTheme.colors.textPrimary,
                             painter = painterResource(
                                 id =
                                 io.getstream.video.android.ui.common.R.drawable.stream_video_ic_close,
@@ -124,11 +124,10 @@ internal fun ChatDialog(
                             contentDescription = null,
                         )
 
-                        MessagesScreen(
-                            showHeader = false,
+                        ChannelScreen(
                             viewModelFactory = viewModelFactory,
                             onBackPressed = { onDismissed.invoke() },
-                            onHeaderTitleClick = { onDismissed.invoke() },
+                            topBarContent = {},
                         )
                     }
                 }

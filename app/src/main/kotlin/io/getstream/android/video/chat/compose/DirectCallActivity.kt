@@ -29,6 +29,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.android.video.chat.compose.ui.call.CallScreen
 import io.getstream.android.video.chat.compose.util.StreamVideoInitHelper
+import io.getstream.android.video.generated.models.CallRejectedEvent
 import io.getstream.result.Result
 import io.getstream.video.android.compose.theme.VideoTheme
 import io.getstream.video.android.compose.ui.components.call.ringing.RingingCallContent
@@ -44,12 +45,11 @@ import io.getstream.video.android.core.call.state.ToggleCamera
 import io.getstream.video.android.core.call.state.ToggleMicrophone
 import io.getstream.video.android.core.call.state.ToggleSpeakerphone
 import io.getstream.video.android.datastore.delegate.StreamUserDataStore
-import io.getstream.video.android.model.mapper.isValidCallId
+import io.getstream.video.android.model.mapper.isValidCallCid
 import io.getstream.video.android.model.mapper.toTypeAndId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.openapitools.client.models.CallRejectedEvent
 import java.util.UUID
 import javax.inject.Inject
 
@@ -71,7 +71,7 @@ class DirectCallActivity : ComponentActivity() {
             val callId: String = intent.getStringExtra(EXTRA_CID)
                 ?: "default:${UUID.randomUUID()}"
 
-            val (type, id) = if (callId.isValidCallId()) {
+            val (type, id) = if (callId.isValidCallCid()) {
                 callId.toTypeAndId()
             } else {
                 "default" to callId

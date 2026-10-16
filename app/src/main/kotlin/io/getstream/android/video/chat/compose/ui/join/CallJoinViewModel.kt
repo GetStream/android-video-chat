@@ -27,7 +27,7 @@ import io.getstream.video.android.core.Call
 import io.getstream.video.android.core.StreamVideo
 import io.getstream.video.android.datastore.delegate.StreamUserDataStore
 import io.getstream.video.android.model.User
-import io.getstream.video.android.model.mapper.isValidCallId
+import io.getstream.video.android.model.mapper.isValidCallCid
 import io.getstream.video.android.model.mapper.toTypeAndId
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -94,7 +94,7 @@ class CallJoinViewModel @Inject constructor(
     private fun joinCall(callId: String? = null): Call {
         val streamVideo = StreamVideo.instance()
         val newCallId = callId ?: "default:${UUID.randomUUID()}"
-        val (type, id) = if (newCallId.isValidCallId()) {
+        val (type, id) = if (newCallId.isValidCallCid()) {
             newCallId.toTypeAndId()
         } else {
             "default" to newCallId
