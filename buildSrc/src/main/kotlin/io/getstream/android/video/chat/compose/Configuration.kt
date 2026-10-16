@@ -1,7 +1,7 @@
 package io.getstream.android.video.chat.compose
 
 object Configuration {
-    const val compileSdk = 34
+    const val compileSdk = 35
     const val targetSdk = 34
     const val minSdk = 26
     const val majorVersion = 1

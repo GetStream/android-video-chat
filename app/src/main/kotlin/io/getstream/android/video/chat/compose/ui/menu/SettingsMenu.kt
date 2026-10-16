@@ -137,14 +137,14 @@ internal fun SettingsMenu(
     }
 
     val onKillSfuWsClick: () -> Unit = {
-        call.debug.doFullReconnection()
+        call.debug.rejoin()
         onDismissed.invoke()
         Toast.makeText(context, "Killing SFU WS. Should trigger reconnect...", Toast.LENGTH_SHORT)
             .show()
     }
 
     val onSwitchSfuClick: () -> Unit = {
-        call.debug.switchSfu()
+        call.debug.migrate()
         onDismissed.invoke()
         Toast.makeText(context, "Switch sfu", Toast.LENGTH_SHORT).show()
     }

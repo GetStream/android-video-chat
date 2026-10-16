@@ -105,7 +105,11 @@ private fun Header(user: User?) {
             Text(
                 modifier = Modifier.weight(1f),
                 color = Color.White,
-                text = user?.name?.ifBlank { user.id }?.ifBlank { user.custom["email"] }.orEmpty(),
+                text = user?.name?.ifBlank { user.id }?.ifBlank {
+                    user.custom?.get(
+                        "email",
+                    )
+                }.orEmpty(),
                 maxLines = 1,
                 fontSize = 16.sp,
             )

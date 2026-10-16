@@ -75,6 +75,7 @@ import io.getstream.android.video.chat.compose.ui.menu.SettingsMenu
 import io.getstream.android.video.chat.compose.ui.menu.VideoFilter
 import io.getstream.android.video.chat.compose.ui.menu.availableVideoFilters
 import io.getstream.android.video.chat.compose.util.config.AppConfig
+import io.getstream.android.video.generated.models.OwnCapability
 import io.getstream.chat.android.ui.common.state.messages.list.MessageItemState
 import io.getstream.video.android.compose.theme.VideoTheme
 import io.getstream.video.android.compose.ui.components.base.StreamBadgeBox
@@ -106,7 +107,6 @@ import io.getstream.video.android.mock.previewCall
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.openapitools.client.models.OwnCapability
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

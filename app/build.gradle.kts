@@ -158,9 +158,6 @@ dependencies {
 
   // Stream Chat SDK
   implementation(libs.stream.chat.compose)
-  implementation(libs.stream.chat.offline)
-  implementation(libs.stream.chat.state)
-  implementation(libs.stream.chat.ui.utils)
 
   implementation(libs.stream.push.firebase)
   implementation(libs.stream.log.android)
@@ -213,7 +210,6 @@ dependencies {
 
   // Video Filters
   implementation(libs.google.mlkit.selfie.segmentation)
-  implementation(files("libs/renderscript-toolkit.aar"))
 
   // Play
   implementation(libs.play.auth)

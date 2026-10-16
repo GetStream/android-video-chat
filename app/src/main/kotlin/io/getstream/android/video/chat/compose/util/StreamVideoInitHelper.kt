@@ -24,16 +24,15 @@ import io.getstream.android.video.chat.compose.data.services.stream.GetAuthDataR
 import io.getstream.android.video.chat.compose.data.services.stream.StreamService
 import io.getstream.android.video.chat.compose.util.config.AppConfig
 import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.api.ChatClientConfig
 import io.getstream.chat.android.client.logger.ChatLogLevel
-import io.getstream.chat.android.offline.plugin.factory.StreamOfflinePluginFactory
-import io.getstream.chat.android.state.plugin.config.StatePluginConfig
-import io.getstream.chat.android.state.plugin.factory.StreamStatePluginFactory
 import io.getstream.log.Priority
 import io.getstream.video.android.core.BuildConfig
 import io.getstream.video.android.core.StreamVideo
 import io.getstream.video.android.core.StreamVideoBuilder
 import io.getstream.video.android.core.logging.LoggingLevel
 import io.getstream.video.android.core.notifications.NotificationConfig
+import io.getstream.video.android.core.socket.common.token.TokenProvider
 import io.getstream.video.android.datastore.delegate.StreamUserDataStore
 import io.getstream.video.android.model.ApiKey
 import io.getstream.video.android.model.User
@@ -151,25 +150,16 @@ object StreamVideoInitHelper {
         user: User,
         token: String,
     ) {
-        val offlinePlugin = StreamOfflinePluginFactory(context)
-        val statePluginFactory = StreamStatePluginFactory(
-            config = StatePluginConfig(
-                backgroundSyncEnabled = true,
-                userPresence = true,
-            ),
-            appContext = context,
-        )
-
         val logLevel = if (BuildConfig.DEBUG) ChatLogLevel.ALL else ChatLogLevel.NOTHING
         val chatClient = ChatClient.Builder(apiKey, context)
-            .withPlugins(offlinePlugin, statePluginFactory)
+            .config(ChatClientConfig(userPresence = true))
             .logLevel(logLevel)
             .build()
 
         val chatUser = io.getstream.chat.android.models.User(
             id = user.id,
-            name = user.name,
-            image = user.image,
+            name = user.name.orEmpty(),
+            image = user.image.orEmpty(),
         )
 
         chatClient.connectUser(
@@ -195,16 +185,18 @@ object StreamVideoInitHelper {
             ensureSingleInstance = false,
             notificationConfig = NotificationConfig(
                 pushDeviceGenerators = listOf(
-                    FirebasePushDeviceGenerator(providerName = "firebase"),
+                    FirebasePushDeviceGenerator(providerName = "firebase", context = context),
                 ),
             ),
-            tokenProvider = {
-                val email = user.custom["email"]
-                val authData = StreamService.instance.getAuthData(
-                    environment = AppConfig.currentEnvironment.value!!.env,
-                    userId = email,
-                )
-                authData.token
+            tokenProvider = object : TokenProvider {
+                override suspend fun loadToken(): String {
+                    val email = user.custom?.get("email")
+                    val authData = StreamService.instance.getAuthData(
+                        environment = AppConfig.currentEnvironment.value!!.env,
+                        userId = email,
+                    )
+                    return authData.token
+                }
             },
         ).build()
     }
